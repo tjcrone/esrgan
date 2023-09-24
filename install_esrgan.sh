@@ -1,20 +1,12 @@
 # #!/bin/bash
 
 # install system-wide packages
-apt-get -yqq update
-apt-get -yqq install man-db vim git less curl wget sudo build-essential
-apt-get -yqq install zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev python3-opencv
+apt-get update
+apt-get -yqq install zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev libbz2-dev python3-opencv
 
 # .bashrc
-RUN echo "alias ll='ls -l'" >> .bashrc
-RUN echo "alias lt='ls -lat'" >> .bashrc
-
-# install miniconda
-mkdir -p ~/miniconda3
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
-bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
-rm -rf ~/miniconda3/miniconda.sh
-~/miniconda3/bin/conda init bash
+RUN echo "alias ll='ls -l'" >> ~/.bashrc
+RUN echo "alias lt='ls -lat'" >> ~/.bashrc
 
 # install esrgan
 git clone https://github.com/xinntao/Real-ESRGAN.git
